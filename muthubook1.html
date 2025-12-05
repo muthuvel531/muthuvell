@@ -167,7 +167,7 @@
         <h4 class="section-title">Select Date</h4>
         <div class="calendar-box">
             <div class="calendar-header">
-                <span>December 2024</span>
+                <h3 id="Muthu">December 2024</h3>
                 <div class="cal-arrows">
                     <span>&lt;</span>
                     <span>&gt;</span>
@@ -257,15 +257,16 @@
         var number = getElementVal("number");
         var address = getElementVal("address");
 
-        var h2text = document.getElementById("myTitle").innerText; // Save H2 also
+        var h2text = document.getElementById("myTitle").innerText; 
+        var h3text = document.getElementById("Muthu").innerText; // Save H2 also
 
-        saveMessages(name, number, address, selectedDay, h2text);
+        saveMessages(name, number, address, selectedDay, h2text, h3text);
 
         document.getElementById("contactForm").reset();
     }
 
     // Save messages to Firebase
-    const saveMessages = (name, number, address, day, title) => {
+    const saveMessages = (name, number, address, day, title, month) => {
         var newContactFrom = contactFormDB.push();
 
         newContactFrom.set({
@@ -273,7 +274,8 @@
             number: number,
             address: address,
             selectedDay: day,  // ⭐ SAVE SPAN VALUE
-            title: title       // ⭐ SAVE H2 VALUE
+            title: title,
+            month: month// ⭐ SAVE H2 VALUE
         });
     };
 
@@ -283,5 +285,6 @@
     };
 </script>
 </body>
+
 
 </html>
